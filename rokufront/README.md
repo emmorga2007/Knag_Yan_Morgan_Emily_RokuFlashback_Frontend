@@ -1,4 +1,4 @@
-# rokufront
+# netflixfront
 
 ## Project setup
 ```

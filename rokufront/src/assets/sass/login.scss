@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+
+.jumbotron { 
+    color: #333;
+
+    h1 { 
+        font-size: 2em; 
+        margin-bottom: 0.5em;
+        font-weight: bold; 
+    }
+
+    p { line-height: 1.5;}
+}
+
+.log-in {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+
+    input {
+        padding: 0 1em;
+        margin-bottom: 1.5em; 
+    }
+}
+
+.login-submit { 
+    font-family: 'Vujahday Script', cursive;
+    font-size: 2.25em;
+    padding: 0 0.7em; 
+}
+
+@media screen and (min-width: 1000px) {
+    .jumbotron p {
+        width: 80%;
+    }
+}
