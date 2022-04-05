@@ -8,8 +8,9 @@ const sql = require('mysql');
  
 //first, connect to "create" the database conneciton
 //this info is stored in congi.js
-let connection = sql.createConnection({
+let pool = sql.createPool({
     //pass connection to host user password and databse and then the port you want to communicate through
+    connectionLimit: 20,
     host : config.host,
     user: config.user,
     password : config.password,
@@ -19,24 +20,19 @@ let connection = sql.createConnection({
 
 //when the router hits users, this route handler will fire and connect to the database and run a query. 
 // this will select all users from our user databse. 
-router.get('/', (req, res) => {
-    //connect to databse 
-    connection.connect();
+router.get('/getall', (req, res) => {
+    pool.getConnection((err, connection) => {
+        if (err) throw err;
 
-    // run a query, get some results (or an error)
-    connection.query('SELECT * FROM user', function(error, results) {
-        //createconnection automatically keeps you connected. connection.release makes it so the next person can make a coneection
-        //conneciton.release();
+        // run a query, get some results (or an error)
+        connection.query('SELECT * FROM user', function(error, results) {
+            connection.release();
 
-        //if something is wrong here double check connection credentials above.
-        if (error) throw error;
+            if (error) throw error;
 
-        //get rows of data back and show in console
-        console.log(results);
-
-        //turn results into a json object then send it back to whatever asked for the data (front end)
-        res.json(results);
-
+            console.log(results);
+            res.json(results);
+        })
     })
 })
 //this makes all the above code public
