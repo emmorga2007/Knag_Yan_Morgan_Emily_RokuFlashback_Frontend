@@ -1,11 +1,10 @@
-import express from 'express';
+const express = require('express');
 
 const port = process.env.PORT || 3000;
 const app = express();
+const router = require('./router/index')
 
-app.get('/', (req, res) => {
-    res.json({ message: 'test' });
-})
+app.use('/users', router);
 
 app.listen(port, () => {
     console.log(`back end up and running at ${port}`);
