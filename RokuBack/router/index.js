@@ -30,6 +30,15 @@ router.get('/getall', (req, res) => {
 
             if (error) throw error;
 
+            results.forEach(result => {
+                delete result.password;
+                delete result.last_name;
+
+                if(!result.avatar){
+                    result.avatar = "temp_avatar.jpg"
+                }
+            })
+
             console.log(results);
             res.json(results);
         })
