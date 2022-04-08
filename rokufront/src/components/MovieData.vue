@@ -1,0 +1,27 @@
+<template>
+    <article class="text-wrapper">
+        <h1>{{movies_title}}</h1>
+        <p>{{movies_storyline}}</p>
+        <div class="release_details">
+            <h4>Watch Time: {{movies_runtime}}</h4>
+            <h4>Released: {{movies_year}}</h4>
+        </div>
+    </article>
+</template>
+
+<script>
+export default {
+    name: "TheMovieData",
+
+    props: {
+        movies_title: String,
+        movies_storyline: String,
+        movies_runtime: String,
+        movies_year: String,
+    }
+}
+</script>
+
+<style lang="scss">
+    @import "@/assets/sass/movietext.scss";
+</style>

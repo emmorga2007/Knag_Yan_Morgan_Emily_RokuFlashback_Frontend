@@ -1,3 +1,9 @@
+const BASE_URL = "http://localhost:3000";
+const UMS_PATH = "/users";
+
+//add api endpoint
+const API_URL = "http://localhost/Roku_Flashback/api/index.php";
+
 module.exports = {
     css: {
       loaderOptions: {
@@ -14,13 +20,13 @@ module.exports = {
     devServer: {
       proxy: {
         '/users': {
-        target: "http://localhost:3000",
+        target: `${BASE_URL + UMS_PATH}`,
         changeOrigin: true,
-        pathRewrite: {'^users': ''}
+        pathRewrite: {'^/users': ''}
         },
 
         '/movies': {
-          target: "http://localhost/Roku_Flashback/api/index.php",
+          target: `${API_URL}`,
           changeOrigin: true,
           pathRewrite: {'^/movies': ''}
         }

@@ -1,0 +1,14 @@
+.text-wrapper {
+    background-color: rgba(17, 17, 17, 0.8);
+    padding: 1.5em;
+
+    h1 { font-size: 1.25em; margin-bottom: 0.5em; }
+
+    p { line-height: 1.3; margin-bottom: 1em; }
+}
+
+.release-details { 
+    display: flex;
+
+    h4:first-of-type { margin-right: 1em; }
+}
