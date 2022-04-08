@@ -7,6 +7,9 @@
         </p>
     </div>
 
+    <h2 class="login-flash" v-if="signup">{{ flash }}</h2>
+    <h2 class="login-flash" v-if="errors">{{ flash }}</h2>
+
     <section class="log-in">
       <label class="sr-only" for="inlineFormInputName">Name</label>
       <input v-model="username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
@@ -14,6 +17,14 @@
       <label class="sr-only" for="inlineFormPassword">Name</label>
       <input v-model="password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
     </section>
+
+    <button
+      v-if="signup"
+        type="submit" 
+        class="btn btn-primary login-submit signup"
+        @click="trySignup"
+      >Sign Up
+    </button>
 
     <button
         type="submit" 
@@ -31,35 +42,81 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      url: '/users/getone',
+      flash: '',
+      signup: false,
+      errors: false,
     }
   },
 
   methods: {
-    tryLogin() {
-      //and use the rout to show the next view 
-      //TODO: this should only happen on a successful login -> this needs to move to the fetch call
-      this.$router.push({ name: 'UserSelect' }) 
+    trylogin() {
+      this.url = 'users/getone';
+      this.login();
+    },
 
-      //mock up the login functionality -> form data is a virtual <form> element's data
-      /*let formData = new FormData();
+    goToUsers(time, vm) {
+      setTimeout(function() {
+        // redirect to the UserSelect view
+        vm.$router.push({ name: 'UserSelect'});
+      }, time);
+    },
 
-      formData.append("username", this.username);
-      formData.appened("password", this.password);
+    trySignup() {
+      this.url = 'users/signup';
+      this.login();
+    },
 
-      //pass the form data to out login API (we dont know what this will be yet. nicks class is foing it.)
-      let url = 'someloginurl';
+    login() { 
 
-      fetch(url, {
-        method: 'POST',
-        body: formData
-      })
+    let formData = { username: this.username, password: this.password };
+
+    //let url = this.url;
+
+    fetch(this.url, {
+      method: 'POST',
+      headers: {
+        "Content-type" : "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
       .then(res => res.json())
-      .then(data => console.table(data))
-      .catch(err => console.error(err)); */
+      .then(data => {
+        // this is the result from the /users/getine router handler
+        console.table(data);
+
+        //switch statement is an alternate if else
+        switch (data.action) {
+          // username isn't in the database
+          case 'add':
+            this.signup = true;
+            this.username = '';
+            this.password = '';
+            this.flash = 'Username does not exist. Do yo want to sign up?';
+            break;
+
+          case 'added':
+            this.flash = 'Added you to Roku Flashback! Enjoy! ... redirecting ...';
+            this.goToUsers(2500, this);
+            break;
+
+
+          //wrong password
+          case 'retry':
+            document.querySelector(`input[type=${data.field}]`).classList.add('error');
+            this.errors = true;
+            this.flash = "Loging info incorrect, Please retry";
+            break;
+
+            default: 
+              this.goToUsers(0, this);
+              //this.$router.push({name: 'UserSelect'});
+        }
+      })
+      .catch( err => console.error(err));
     }
   }
-
 
 }
 </script>

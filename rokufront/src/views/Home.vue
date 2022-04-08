@@ -1,14 +1,38 @@
 <template>
     <section>
-        <h1> Welcome {{ first_name }}!</h1>
         <!--Custom movie component goes here -->
+        <section class="movie-container">
+            <MovieData
+                :movies_title="currentMovie.movies_title"
+                :movies_storyline="currentMovie.movies_storyline"
+                :movies_runtime="currentMovie.movies_runtime"
+                :movies_year="currentMovie.movies_year"
+            ></MovieData>
+            
+            <MoviePlayer
+            :movies_trailer="currentMovie.movies_trailer"
+            ></MoviePlayer>
 
+        </section>
         <!--show the list of movies retrieved.  -->
+
+        <section class="movie-thumbs">
+            <MovieThumb
+                v-for="movie in movies"
+                :key="movie.movies_id"
+                :thumb="movie.movies_cover"
+                @click="setCurrentMovie(movie)"
+            ></MovieThumb>
+        </section>
 
     </section>
 </template>
 
 <script>
+import MoviePlayer from "@/components/MoviePlayer.vue";
+import MovieData from "@/components/MovieData.vue";
+import MovieThumb from "@/components/MovieThumb.vue";
+
 export default {
     name: "TheUserHomePage", 
 
@@ -16,7 +40,7 @@ export default {
         first_name: String,
         role: String,
         premissions: String, 
-        avatar: String,
+        avatar: String
     },
 
     created(){
@@ -39,6 +63,22 @@ export default {
             movies: [],
             currentMovie: {}
         }
+    },
+
+    methods: {
+        setCurrentMovie(movie) {
+            this.currentMovie = movie;
+        }
+    },
+
+    components: {
+        MoviePlayer,
+        MovieData,
+        MovieThumb,
     }
 }
 </script>
+
+<style lang="scss">
+    @import "@/assets/sass/homepage.scss";
+</style>
