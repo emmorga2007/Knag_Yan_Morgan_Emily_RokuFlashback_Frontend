@@ -2,5 +2,5 @@ module.exports = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'users'
+    database: 'db_roku_flashback'
 }

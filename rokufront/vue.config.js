@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:3000";
 const UMS_PATH = "/users";
 
 //add api endpoint
-const API_URL = "http://localhost/Roku_Flashback/api/index.php";
+const API_URL = "http://localhost/Morgan_Roku/database/api/index.php";
 
 module.exports = {
     css: {

@@ -6,11 +6,11 @@
       <nav class="float-right">
       <ul v-if="authenticated">            
         <!-- switch users -->
-        <li @click="switchUsers"><i class="fas fa-user-circle"></i></li>
+        <li @click="switchUsers" title="Swtich users"><i class="fas fa-user-circle"></i></li>
         <!-- user settings, but only if you are admin -->
         <li><i class="fas fa-cog"></i></li>
         <!-- log out -->
-        <li @click="logOut"><i class="fas fa-power-off"></i></li>					
+        <li @click="logOut" title="Log out"><i class="fas fa-power-off"></i></li>					
       </ul>
       </nav>
     </header>
