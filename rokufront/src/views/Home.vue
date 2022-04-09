@@ -1,21 +1,25 @@
 <template>
     <section>
-        <h1>Welcome {{ first_name }}!</h1>
 
         <!-- custom movie component goes here - show the current selection -->
-        <section class="movie-container">
+        <section class="movie-container ">
+          
+          <MoviePlayer
+            :movies_trailer="currentMovie.movies_trailer"
+          ></MoviePlayer>
+
           <MovieData
             :movies_title="currentMovie.movies_title"
             :movies_storyline="currentMovie.movies_storyline"
             :movies_runtime="currentMovie.movies_runtime"
             :movies_year="currentMovie.movies_year"
           ></MovieData>
-
-          <MoviePlayer
-            :movies_trailer="currentMovie.movies_trailer"
-          ></MoviePlayer>
+          
         </section>
 
+        <div>
+          <h1>Top picks for {{ first_name }} :</h1>
+        </div>
         <!-- show the list of movies retrieved -->
         <section class="movie-thumbs">
           <MovieThumb
