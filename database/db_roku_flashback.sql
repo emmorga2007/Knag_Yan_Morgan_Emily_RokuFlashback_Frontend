@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1:3306
--- 產生時間： 2022-04-09 20:06:16
--- 伺服器版本： 5.7.31
--- PHP 版本： 7.3.21
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 09, 2022 at 09:31 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `db_roku_flashback`
+-- Database: `db_roku_flashback`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `genre`
+-- Table structure for table `genre`
 --
 
 DROP TABLE IF EXISTS `genre`;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `genre`
+-- Dumping data for table `genre`
 --
 
 INSERT INTO `genre` (`id`, `genre_name`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `genre` (`id`, `genre_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `genre_movie`
+-- Table structure for table `genre_movie`
 --
 
 DROP TABLE IF EXISTS `genre_movie`;
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `genre_movie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `genre_movie`
+-- Dumping data for table `genre_movie`
 --
 
 INSERT INTO `genre_movie` (`movie_id`, `genre_id`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `genre_movie` (`movie_id`, `genre_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `movies`
+-- Table structure for table `movies`
 --
 
 DROP TABLE IF EXISTS `movies`;
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `movies`
+-- Dumping data for table `movies`
 --
 
 INSERT INTO `movies` (`id`, `movies_cover`, `movies_title`, `movies_year`, `movies_runtime`, `movies_storyline`, `movies_trailer`, `movies_release`, `rating_id`) VALUES
@@ -168,7 +168,7 @@ INSERT INTO `movies` (`id`, `movies_cover`, `movies_title`, `movies_year`, `movi
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `permissions_rating`
+-- Table structure for table `permissions_rating`
 --
 
 DROP TABLE IF EXISTS `permissions_rating`;
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `permissions_rating` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- 傾印資料表的資料 `permissions_rating`
+-- Dumping data for table `permissions_rating`
 --
 
 INSERT INTO `permissions_rating` (`rating_id`, `permisssions`) VALUES
@@ -202,7 +202,7 @@ INSERT INTO `permissions_rating` (`rating_id`, `permisssions`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `ratings`
+-- Table structure for table `ratings`
 --
 
 DROP TABLE IF EXISTS `ratings`;
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `ratings` (
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `ratings`
+-- Dumping data for table `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `ratings_code`, `ratings_categories`) VALUES
@@ -228,7 +228,7 @@ INSERT INTO `ratings` (`id`, `ratings_code`, `ratings_categories`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -241,18 +241,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `permissions` int(11) NOT NULL,
   `avatar` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `password`, `role`, `permissions`, `avatar`) VALUES
-(1, 'fred', 'flintstone', 'yabba', 1, 5, 'count_olaf.jpg'),
-(2, 'barney', 'rubble', 'dabba', 0, 3, ''),
-(3, 'Puppy', 'Doggy', 'woofwoof', 0, 2, ''),
-(4, 'Bunny', 'test', 'test', 0, 3, ''),
-(6, 'smart doggy', 'test', '0000', 0, 3, '');
+(1, 'Mira', 'Mains', 'hello', 1, 5, 'AvatarOld.png'),
+(2, 'lil\' Wayne', 'Douglas', 'hello', 0, 2, 'AvatarYoung.png'),
+(3, 'Puppy', 'Doggy', 'woofwoof', 0, 3, 'AvatarMan.png');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
