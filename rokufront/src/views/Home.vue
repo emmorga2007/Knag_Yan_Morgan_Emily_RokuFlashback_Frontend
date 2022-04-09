@@ -2,22 +2,26 @@
     <section>
 
         <!-- custom movie component goes here - show the current selection -->
-        <section class="movie-container ">
-          
-          <MoviePlayer
-            :movies_trailer="currentMovie.movies_trailer"
-          ></MoviePlayer>
+        <section class="movie-container">
 
-          <MovieData
-            :movies_title="currentMovie.movies_title"
-            :movies_storyline="currentMovie.movies_storyline"
-            :movies_runtime="currentMovie.movies_runtime"
-            :movies_year="currentMovie.movies_year"
-          ></MovieData>
+          <div class="videoHeader">
+            <MoviePlayer
+              :movies_trailer="currentMovie.movies_trailer"
+            ></MoviePlayer>
+          </div>
+
+          <div class="movieBio">
+            <MovieData
+              :movies_title="currentMovie.movies_title"
+              :movies_storyline="currentMovie.movies_storyline"
+              :movies_runtime="currentMovie.movies_runtime"
+              :movies_year="currentMovie.movies_year"
+            ></MovieData>
+          </div>
           
         </section>
 
-        <div>
+        <div class="movieQueryMessage">
           <h1>Top picks for {{ first_name }} :</h1>
         </div>
         <!-- show the list of movies retrieved -->

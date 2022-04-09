@@ -1,6 +1,17 @@
-.movie-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+.text-wrapper{
+    h1{
+        font-size: large;
+    }
+    p{
+        font-size: small;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    h4{
+        display: inline-block;
+        padding-right: 2em;
+        font-size: small;
+    }
 }
 
 .movie-thumbs {
@@ -21,8 +32,21 @@ video {
     max-width: 100%;
 }
 
+
 @media screen and (min-width: 1000px) {
-    .movie-container {
-        grid-template-columns: 1fr 3fr;
+    .text-wrapper{
+        h1{
+            font-size: 1.5em;
+        }
+        p{
+            font-size: 1.2em;
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+        h4{
+            display: inline-block;
+            padding-right: 2em;
+            font-size: 1em;
+        }
     }
 }
