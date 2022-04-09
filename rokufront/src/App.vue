@@ -1,7 +1,7 @@
 <template>
   <section class="app-wrapper">
     <header class="col-sm-12 roku-header">
-      <img src="@/assets/images/roku.svg" alt="Roku logo">
+      <img src="@/assets/images/roku.svg" alt="Roku logo" width="250">
       
       <nav class="float-right">
       <ul v-if="authenticated">            

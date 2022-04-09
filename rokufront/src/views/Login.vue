@@ -1,11 +1,12 @@
 <template>
   <section class="container">
-    <div class="jumbotron">
-        <h1>Welcome to Flashblack!</h1>
-        <p class="lead">
-        Before revisiting your favourite movies, tv shows or music from yesteryear, please log in with a valid username and password.
-        </p>
-    </div>
+    <div class="loginHeader">
+        <img src="@/assets/images/roku.svg" alt="Roku logo">
+        <h1 class="lead">
+        Favourites From The Past
+        </h1>
+        <p>Please log in with a valid username and password.</p>
+    </div> 
 
     <h2 class="login-flash" v-if="signup">{{ flash }}</h2>
     <h2 class="login-flash" v-if="errors">{{ flash }}</h2>
@@ -30,7 +31,7 @@
         type="submit" 
         class="btn btn-primary login-submit"
         @click="tryLogin" 
-      >Go!
+      >Enter
     </button>
     <!-- when click on the btn, call tryLogin method -->
   </section>

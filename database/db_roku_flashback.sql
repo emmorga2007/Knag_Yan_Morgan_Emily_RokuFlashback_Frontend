@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1:3306
--- 產生時間： 2022-04-09 14:35:34
+-- 產生時間： 2022-04-09 20:06:16
 -- 伺服器版本： 5.7.31
 -- PHP 版本： 7.3.21
 
@@ -163,8 +163,7 @@ INSERT INTO `movies` (`id`, `movies_cover`, `movies_title`, `movies_year`, `movi
 (18, 'donjon.jpg', 'Don Jon', '2013', '1h 30m', 'A New Jersey guy dedicated to his family, friends, and church, develops unrealistic expectations from watching porn and works to find happiness and intimacy with his potential true love.', 'donjon.mp4', 'September 27, 2013', 3),
 (19, 'gravity.jpg', 'Gravity', '2013', '1h 31m', 'Two astronauts work together to survive after an accident which leaves them alone in space.', 'Gravity.mp4', 'October 4, 2013', 3),
 (20, 'pi.jpg', 'Life of Pi', '2012', '2h 7m', 'A young man who survives a disaster at sea is hurtled into an epic journey of adventure and discovery. While cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.', 'Pi.jpg', 'November 21, 2012', 2),
-(21, 'silver.jpg', 'Silver Linings Playbook', '2012', '2h 2m', 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', 'Silver.jpg', 'December 25, 2012', 3),
-(23, 'test.jpg', 'test', '2012', '1h 44m', 'This is too long to make up', 'test.mp4', 'next year', 2);
+(21, 'silver.jpg', 'Silver Linings Playbook', '2012', '2h 2m', 'After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.', 'Silver.jpg', 'December 25, 2012', 3);
 
 -- --------------------------------------------------------
 
@@ -242,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `permissions` int(11) NOT NULL,
   `avatar` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `user`
@@ -252,7 +251,8 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `password`, `role`, `permis
 (1, 'fred', 'flintstone', 'yabba', 1, 5, 'count_olaf.jpg'),
 (2, 'barney', 'rubble', 'dabba', 0, 3, ''),
 (3, 'Puppy', 'Doggy', 'woofwoof', 0, 2, ''),
-(4, 'Bunny', 'test', 'test', 0, 3, '');
+(4, 'Bunny', 'test', 'test', 0, 3, ''),
+(6, 'smart doggy', 'test', '0000', 0, 3, '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

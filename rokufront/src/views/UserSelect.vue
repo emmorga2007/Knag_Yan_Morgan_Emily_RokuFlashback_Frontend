@@ -1,6 +1,6 @@
 <template>
     <section class="users">
-        <h1 class="users-headline text-center">Who's using Roku?</h1>
+        <h1 class="users-headline text-center">Who's Watching Roku?</h1>
 
         <section class="users-container">
             <!-- Create a user component for every user here. -->

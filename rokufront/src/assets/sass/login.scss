@@ -1,15 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
 
-.jumbotron { 
-    color: #333;
+body{
+    background-image: url('~@/assets/images/movie_board_homepage.png');
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.loginHeader { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem;
 
     h1 { 
-        font-size: 2em; 
+        font-size: 3em; 
         margin-bottom: 0.5em;
         font-weight: bold; 
     }
 
-    p { line-height: 1.5;}
+    p { 
+        line-height: 2.5;
+        font-size: 1.3rem;
+    
+    }
 }
 
 .log-in {
@@ -24,19 +40,45 @@
 }
 
 .login-submit { 
-    font-family: 'Vujahday Script', cursive;
-    font-size: 2.25em;
+    font-family: 'Patua One', cursive;
+    font-size: 1em;
     padding: 0 0.7em; 
+    background-color: grey;
 }
 
 .error { border: 4px solid red; }
 
-.login-flash { margin-bottom: 1em; }
+.login-flash { 
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: azure; 
+    color: black;
+    border: 4px solid rgb(132, 10, 26);
+    border-radius: 1em;
+
+}
 
 .signup { margin-right: 0.7em; }
 
-@media screen and (min-width: 1000px) {
-    .jumbotron p {
-        width: 80%;
+@media screen and (max-width: 800px) {
+    .loginHeader {
+        padding: 2rem;
+        h1{
+            font-size: 1.5rem;
+        }
+        p{
+            font-size: 0.9rem;
+            line-height: 6rem;
+        }
+    }
+
+    .log-in {
+        display:flex;
+        justify-content: row;
+    
+        input {
+            padding: 0 1em;
+            margin-bottom: 1.5em; 
+        }
     }
 }
