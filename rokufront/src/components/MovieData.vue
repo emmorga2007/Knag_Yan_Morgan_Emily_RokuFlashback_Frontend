@@ -4,8 +4,8 @@
         <h1>{{movies_title}}</h1>
         <p>{{movies_storyline}}</p>
         <div class="release-details">
-            <h4>Runtime: {{movies_runtime}}</h4>
             <h4>Released: {{movies_year}}</h4>
+            <h4>Runtime: {{movies_runtime}}</h4>
         </div>
     </article>
 </template>
