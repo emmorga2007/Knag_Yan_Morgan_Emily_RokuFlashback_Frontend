@@ -29,6 +29,12 @@
     padding: 0 0.7em; 
 }
 
+.error { border: 4px solid red; }
+
+.login-flash { margin-bottom: 1em; }
+
+.signup { margin-right: 0.7em; }
+
 @media screen and (min-width: 1000px) {
     .jumbotron p {
         width: 80%;

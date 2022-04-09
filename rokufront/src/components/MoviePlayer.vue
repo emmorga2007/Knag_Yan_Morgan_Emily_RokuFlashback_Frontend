@@ -1,7 +1,7 @@
 <template>
+<!-- canplaythrough is a built-in event -->
     <video controls muted
-        v-if="movies_trailer"
-        :src="require('@/assets/video/' + movies_trailer)" 
+        :src="require('@/assets/video/' + movies_trailer)"
         @canplaythrough="playVideo"
     ></video>
 </template>
@@ -18,7 +18,6 @@ export default {
         playVideo(event) {
             event.currentTarget.muted = false;
             event.currentTarget.play();
-
         }
     }
 }

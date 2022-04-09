@@ -1,19 +1,67 @@
 <template>
   <section class="app-wrapper">
     <header class="col-sm-12 roku-header">
-      <img src="@/assets/images/roku.svg" alt="Roku logo" width="150"><span>FlashBack</span>
+      <img src="@/assets/images/roku.svg" alt="Roku logo">
+      
       <nav class="float-right">
-      <!-- <ul>            
-        <li><i class="fas fa-user-circle"></i></li>
+      <ul v-if="authenticated">            
+        <!-- switch users -->
+        <li @click="switchUsers"><i class="fas fa-user-circle"></i></li>
+        <!-- user settings, but only if you are admin -->
         <li><i class="fas fa-cog"></i></li>
-        <li><i class="fas fa-power-off"></i></li>					
-      </ul> -->
+        <!-- log out -->
+        <li @click="logOut"><i class="fas fa-power-off"></i></li>					
+      </ul>
       </nav>
     </header>
 
-    <router-view></router-view>
+    <router-view @setauth="setAuthenticated"></router-view>
+  
   </section>
 </template>
+
+<script>
+export default {
+  name: "TheRokuFlashbackApp",
+
+  data() {
+    return {
+      authenticated: false
+    }
+  },
+
+  created() {
+    if (window.localStorage.getItem('currentUser')) {
+      this.$router.push({
+        name: 'UserHome',
+        params: JSON.parse(localStorage.getItem('currentUser'))
+      });
+
+      // need to let the app know this saved user is a valid user
+      this.setAuthenticated(true);
+    }
+  },
+
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+
+    switchUsers() {
+      this.$router.push({ name: 'UserSelect'});
+    },
+
+    logOut() {
+      if (window.localStorage.getItem('currentUser')) {
+        localStorage.removeItem('currentUser');
+      }
+      this.setAuthenticated(false);
+      this.$router.push({ name: 'Login'});
+    }
+  }
+  
+}
+</script>
 
 <style lang="scss">
   @import "@/assets/sass/main.scss";

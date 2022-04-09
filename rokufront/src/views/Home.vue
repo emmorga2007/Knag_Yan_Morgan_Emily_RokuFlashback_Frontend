@@ -1,31 +1,34 @@
 <template>
     <section>
-        <!--Custom movie component goes here -->
+        <h1>Welcome {{ first_name }}!</h1>
+
+        <!-- custom movie component goes here - show the current selection -->
         <section class="movie-container">
-            <MovieData
-                :movies_title="currentMovie.movies_title"
-                :movies_storyline="currentMovie.movies_storyline"
-                :movies_runtime="currentMovie.movies_runtime"
-                :movies_year="currentMovie.movies_year"
-            ></MovieData>
-            
-            <MoviePlayer
+          <MovieData
+            :movies_title="currentMovie.movies_title"
+            :movies_storyline="currentMovie.movies_storyline"
+            :movies_runtime="currentMovie.movies_runtime"
+            :movies_year="currentMovie.movies_year"
+          ></MovieData>
+
+          <MoviePlayer
             :movies_trailer="currentMovie.movies_trailer"
-            ></MoviePlayer>
-
+          ></MoviePlayer>
         </section>
-        <!--show the list of movies retrieved.  -->
 
+        <!-- show the list of movies retrieved -->
         <section class="movie-thumbs">
-            <MovieThumb
-                v-for="movie in movies"
-                :key="movie.movies_id"
-                :thumb="movie.movies_cover"
-                @click="setCurrentMovie(movie)"
-            ></MovieThumb>
+          <MovieThumb
+            v-for="movie in movies"
+            :key="movie.movies_id"
+            :thumb="movie.movies_cover"
+            @click="setCurrentMovie(movie)"
+          ></MovieThumb>
         </section>
+
 
     </section>
+    
 </template>
 
 <script>
@@ -34,51 +37,65 @@ import MovieData from "@/components/MovieData.vue";
 import MovieThumb from "@/components/MovieThumb.vue";
 
 export default {
-    name: "TheUserHomePage", 
+  name: 'TheUserHomePage',
 
-    props: {
-        first_name: String,
-        role: String,
-        premissions: String, 
-        avatar: String
-    },
+  props: {
+    first_name: String,
+    role: String,
+    permissions: String,
+    avatar: String
+  },
 
-    created(){
-        fetch('/movies')
-            .then(res => res.json())
-            .then(data => { 
-                console.log(data);
-                // store all the movies in the vue instance
-                this.movies = data[0];
-
-                // pick a movie at random and show it
-                this.currentMovie = data[0][Math.floor(Math.random() * data[0].length)];
-            })
-        .catch(err => console.error(err));
-
-    },
-
-    data() {
-        return {
-            movies: [],
-            currentMovie: {}
-        }
-    },
-
-    methods: {
-        setCurrentMovie(movie) {
-            this.currentMovie = movie;
-        }
-    },
-
-    components: {
-        MoviePlayer,
-        MovieData,
-        MovieThumb,
+  created() {
+    // store the active user in localStorage
+    let currentUser = {
+      first_name: this.first_name,
+      role: this.role,
+      permissions: this.permissions,
+      avatar: this.avatar
     }
+
+    if (window.localStorage) {
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    }
+    
+
+
+    // get data from API
+    // '/movies?ratings=this.permissions'
+    fetch('/movies')
+        .then(res => res.json())
+        .then(data => { 
+            console.log(data);
+            // store all the movies in the Vue instance
+            this.movies = data[0];
+            // pick a movie at random and show it
+            this.currentMovie = data[0][Math.floor(Math.random() * data[0].length)];
+        })
+      .catch(err => console.error(err));
+  },
+
+  data() {
+    return {
+      movies: [],
+      currentMovie: {}
+    }
+  },
+
+  methods: {
+    setCurrentMovie(movie) {
+      this.currentMovie = movie;
+    }
+  },
+
+  components: {
+    MoviePlayer,
+    MovieData,
+    MovieThumb
+  }
 }
 </script>
 
 <style lang="scss">
-    @import "@/assets/sass/homepage.scss";
+  @import "@/assets/sass/homepage.scss"
 </style>
