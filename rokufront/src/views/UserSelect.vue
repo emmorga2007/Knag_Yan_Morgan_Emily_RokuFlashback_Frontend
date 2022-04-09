@@ -16,7 +16,7 @@
 
 
 <script>
-import User from "@/components/User.vue"
+import User from "@/components/Users.vue"
 
 export default {
     name: 'TheUsersView',
