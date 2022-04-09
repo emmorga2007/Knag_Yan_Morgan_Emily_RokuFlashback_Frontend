@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name: "TheVideoPlayer",
+    name: "TheMoviePlayer",
 
     props: {
         movies_trailer: String

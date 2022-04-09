@@ -20,7 +20,7 @@
         <section class="movie-thumbs">
           <MovieThumb
             v-for="movie in movies"
-            :key="movie.movies_id"
+            :key="movie.id"
             :thumb="movie.movies_cover"
             @click="setCurrentMovie(movie)"
           ></MovieThumb>
