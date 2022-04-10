@@ -70,8 +70,7 @@ export default {
 
 
     // get data from API
-    // '/movies?ratings=this.permissions'
-    fetch('/movies')
+    fetch(`/movies?rating_id=${this.permissions}`)
         .then(res => res.json())
         .then(data => { 
             console.log(data);
