@@ -2,7 +2,8 @@ const BASE_URL = "http://localhost:3000";
 const UMS_PATH = "/users";
 
 //add api endpoint
-const API_URL = "http://localhost/Knag_Yan_Morgan_Emily_RokuFlashback_Frontend/database/api/index.php";
+// the Roku_flashback is our wrapping folder name.
+const API_URL = "http://localhost/Roku_flashback/Kang_Yan_Morgan_Emily_RokuFlashback_Backend/database/api/index.php";
 
 module.exports = {
     css: {
