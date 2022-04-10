@@ -9,6 +9,10 @@ body{
     max-height: 100vh;
 }
 
+.container {
+    min-height: 105vh;
+}
+
 .loginHeader { 
     display: flex;
     flex-direction: column;
@@ -62,6 +66,7 @@ body{
 .signup { margin-right: 0.7em; }
 
 @media screen and (max-width: 800px) {
+
     .loginHeader {
         padding: 2rem;
         h1{
